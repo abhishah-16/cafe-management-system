@@ -12,24 +12,12 @@ import { SharedModule } from './shared/shared.module';
 import { FullComponent } from './layouts/full/full.component';
 import { AppHeaderComponent } from './layouts/full/header/header.component';
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
-// import {NgxUiLoaderModule,PB_DIRECTION,SPINNER,NgxUiLoaderConfig} from 'ngx-ui-loader'
+import { TokenInterceptor } from './services/token.interceptor';
 
-// const ngxUiLoaderConfig:NgxUiLoaderConfig = {
-//   text:"loading..",
-//   textColor:"#ffffff",
-//   textPosition:"center-center",
-//   pbColor:"red",
-//   bgsColor:"red",
-//   fgsColor:"red",
-//   fgsType:"ball-spin-clockwise",
-//   fgsSize:100,
-//   pbDirection:PB_DIRECTION.leftToRight,
-//   pbThickness:5
-// }
 @NgModule({
   declarations: [	
     AppComponent,
@@ -54,7 +42,8 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     // NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
-  providers: [],
+  providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}

@@ -25,10 +25,16 @@ export class UserService {
   }
 
   // login user
-  login(data:any) {
-    return this.httpclient.post(this.url+
-      "/user/login",data,{
-        headers: new HttpHeaders().set("Content-Type", "application/json")
-      })
+  login(data: any) {
+    return this.httpclient.post(this.url +
+      "/user/login", data, {
+      headers: new HttpHeaders().set("Content-Type", "application/json")
+    })
+  }
+
+  // checktoken
+  checktoken() {
+    return this.httpclient.get(this.url+
+      "/user/checktoken")
   }
 }
