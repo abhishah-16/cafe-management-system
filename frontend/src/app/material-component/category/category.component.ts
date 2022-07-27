@@ -66,7 +66,7 @@ export class CategoryComponent implements OnInit {
       } else {
         this.responsemessage = GlobalConstants.genericerror
       }
-      this.snackbarservice.opensnackbar(this.responsemessage, GlobalConstants.error)
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
     })
   }
 

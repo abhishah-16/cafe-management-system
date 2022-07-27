@@ -6,6 +6,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstants } from 'src/app/shared/global-constant';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ProductComponent } from '../product/product.component';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
   selector: 'app-manage-product',
@@ -26,6 +27,7 @@ export class ManageProductComponent implements OnInit {
   ngOnInit(): void {
     this.tableData()
   }
+
   handleaddaction() {
     const dialogconfig = new MatDialogConfig()
     dialogconfig.data = {
@@ -40,6 +42,7 @@ export class ManageProductComponent implements OnInit {
       this.tableData()
     })
   }
+
   handleeditaction(value: any) {
     const dialogconfig = new MatDialogConfig()
     dialogconfig.data = {
@@ -55,16 +58,61 @@ export class ManageProductComponent implements OnInit {
       this.tableData()
     })
   }
+
   handledeleteaction(value: any) {
+    const dialogconfig = new MatDialogConfig()
+    dialogconfig.data = {
+      message: 'delete ' + value.name + ' product',
+    }
+    const dialogRef = this.dialog.open(ConfirmationComponent, dialogconfig)
+    const sub = dialogRef.componentInstance.onemitstatuschange.subscribe((response: any) => {
+      this.deleteProduct(value.id)
+      dialogRef.close()
+      this.tableData()
+    })
 
   }
+
+  deleteProduct(id: any) {
+    this.productservice.deleteProduct(id).subscribe((response: any) => {
+      this.tableData()
+      this.responsemessage = response
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
+    }, (error: any) => {
+      if (error) {
+        console.log(error)
+        this.responsemessage = error.error.text
+      } else {
+        this.responsemessage = GlobalConstants.genericerror
+      }
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
+    })
+  }
+
   onChange(status: any, id: any) {
-
+    const data = {
+      status: status.toString(),
+      id: id
+    }
+    this.productservice.updateProductStatus(data).subscribe((response: any) => {
+      this.responsemessage = response
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
+    }, (error: any) => {
+      if (error) {
+        console.log(error)
+        this.responsemessage = error.error.text
+      } else {
+        this.responsemessage = GlobalConstants.genericerror
+      }
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
+    })
   }
+
   applyFilter(event: Event) {
     const filtervalue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filtervalue.trim().toLowerCase()
   }
+  
   tableData() {
     this.productservice.getProducts().subscribe((response: any) => {
       this.dataSource = new MatTableDataSource(response)
