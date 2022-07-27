@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './services/token.interceptor';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [	
@@ -28,7 +29,7 @@ import { TokenInterceptor } from './services/token.interceptor';
     AppSidebarComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    LoginComponent
+    LoginComponent,
    ],
   imports: [
     BrowserModule,
@@ -40,12 +41,14 @@ import { TokenInterceptor } from './services/token.interceptor';
     FlexLayoutModule,
     SharedModule,
     HttpClientModule,
+    MatTableModule
     // NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
   bootstrap: [AppComponent],
   schemas:[
-    NO_ERRORS_SCHEMA
+    // NO_ERRORS_SCHEMA,
+    // CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class AppModule { }
