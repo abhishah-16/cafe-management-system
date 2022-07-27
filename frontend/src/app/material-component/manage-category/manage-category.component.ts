@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -22,7 +22,6 @@ export class ManageCategoryComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router
   ) { }
-
   ngOnInit(): void {
     this.tableData()
   }
@@ -43,7 +42,7 @@ export class ManageCategoryComponent implements OnInit {
       dialogref.close()
     })
 
-    this.tableData()
+    // this.tableData()
   }
   handleeditaction(value: any) {
     const dialogconfig = new MatDialogConfig()
@@ -56,10 +55,13 @@ export class ManageCategoryComponent implements OnInit {
     this.router.events.subscribe(() => {
       dialogref.close()
     })
-    const sub = dialogref.componentInstance.onEditcategory.subscribe(  (res) => {
-      console.log(res)
-      this.tableData()
+    const sub = dialogref.componentInstance.onEditcategory.subscribe((res) => {
+      // console.log(res)
+      // this.tableData()
     })
+    // this.categoryservice.getCategory().subscribe((response: any) => {
+    //   console.log(response)
+    // })
   }
 
   tableData() {

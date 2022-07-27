@@ -50,7 +50,7 @@ export class CategoryComponent implements OnInit {
     const formData = this.categoryForm.value
     const data = {
       name: formData.name
-    
+
     }
     this.categoryservice.addCategory(data).subscribe((response: any) => {
       this.dialog.close()
@@ -72,23 +72,23 @@ export class CategoryComponent implements OnInit {
   edit() {
     const formData = this.categoryForm.value
     const data = {
-      id:this.dialogdata.data.id,
+      id: this.dialogdata.data.id,
       name: formData.name,
     }
     // console.log(data)
     this.categoryservice.updateCategory(data).subscribe((response: any) => {
-      this.dialog.close()
-      this.responsemessage = response
-      this.onEditcategory.emit()
-      this.snackbarservice.opensnackbar(this.responsemessage, "")
+      this.dialog.close();
+      this.responsemessage = response;
+      this.onEditcategory.emit();
+      this.snackbarservice.opensnackbar(this.responsemessage, "");
     }, (error: any) => {
       if (error) {
-        this.dialog.close()
-        this.responsemessage = error.error.text
+        this.dialog.close();
+        this.responsemessage = error.error.text;
       } else {
-        this.responsemessage = GlobalConstants.genericerror
+        this.responsemessage = GlobalConstants.genericerror;
       }
-      this.snackbarservice.opensnackbar(this.responsemessage, "success")
+      this.snackbarservice.opensnackbar(this.responsemessage, "success");
     })
   }
 
