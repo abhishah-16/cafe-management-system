@@ -14,6 +14,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { CategoryComponent } from './category/category.component';
+import { ManageProductComponent } from './manage-product/manage-product.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   imports: [
@@ -33,6 +35,8 @@ import { CategoryComponent } from './category/category.component';
     ChangepasswordComponent,
     ManageCategoryComponent,
     CategoryComponent,
+    ManageProductComponent,
+    ProductComponent,
   ]
 })
 export class MaterialComponentsModule {}

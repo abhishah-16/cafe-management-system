@@ -98,7 +98,7 @@ router.get('/checktoken', auth.authenticationToken, (req, res) => {
 router.post('/changepassword', auth.authenticationToken, (req, res) => {
     const user = req.body
     const email = res.locals.email
-    console.log(email)
+    // console.log(email)
 
     query = `select * from "user" where email=$1 and password=$2`
     connection.query(query, [user.email, user.oldpassword], (err, result) => {
