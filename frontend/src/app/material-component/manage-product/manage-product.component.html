@@ -19,7 +19,7 @@
 <hr>
 <!-- <div class="container"> -->
 <!-- <div class="responsive_table"> -->
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">{{element.name}}</td>
@@ -53,6 +53,6 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displaycolumn"></tr>
     <tr mat-row *matRowDef="let row;columns:displaycolumn"></tr>
-</mat-table>
+</table>
 <!-- </div> -->
 <!-- </div> -->

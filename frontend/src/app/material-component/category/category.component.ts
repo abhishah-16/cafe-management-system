@@ -60,12 +60,13 @@ export class CategoryComponent implements OnInit {
     }, (error: any) => {
       if (error) {
         console.log(error)
+        this.onAddcategory.emit()
         this.dialog.close()
         this.responsemessage = error.error.text
       } else {
         this.responsemessage = GlobalConstants.genericerror
       }
-      this.snackbarservice.opensnackbar(this.responsemessage, GlobalConstants.error)
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
     })
   }
 
@@ -84,6 +85,7 @@ export class CategoryComponent implements OnInit {
     }, (error: any) => {
       if (error) {
         this.dialog.close();
+        this.onEditcategory.emit();
         this.responsemessage = error.error.text;
       } else {
         this.responsemessage = GlobalConstants.genericerror;

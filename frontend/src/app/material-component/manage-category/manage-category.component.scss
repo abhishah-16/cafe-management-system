@@ -4,9 +4,19 @@
 mat-card{
     padding:20px;
 }
-.responsive_table{
-    width:500px
+// .responsive_table{
+//     width:500px
+// }
+td{
+    width:1000px
 }
 th,td{
-    width:500px
+    font-size: larger;
+    font-weight: bolder;
 }
+th{
+    color:red
+}
+.mat-row:hover .mat-cell {
+    background-color: lightgray;
+  }
