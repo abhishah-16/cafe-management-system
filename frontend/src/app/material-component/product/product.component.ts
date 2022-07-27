@@ -80,7 +80,7 @@ export class ProductComponent implements OnInit {
     this.productservice.addProduct(data).subscribe((response: any) => {
       this.dialog.close()
       this.responsemessage = response?.message
-      this.onAddproduct.emit()
+      // this.onAddproduct.emit()
       this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error: any) => {
       if (error) {
@@ -91,13 +91,13 @@ export class ProductComponent implements OnInit {
       } else {
         this.responsemessage = GlobalConstants.genericerror
       }
-      this.snackbarservice.opensnackbar(this.responsemessage, GlobalConstants.error)
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
     })
   }
   edit() {
     const formData = this.productForm.value
     const data = {
-      id:this.dialogdata.data.id,
+      id: this.dialogdata.data.id,
       name: formData.name,
       categoryid: formData.categoryid,
       description: formData.description,

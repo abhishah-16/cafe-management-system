@@ -28,23 +28,24 @@
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" fxFlex>
-                    <mat-label>Category</mat-label>
-                    <mat-select formControlName="categoryid">
-                        <mat-option *ngFor="let c of categories" [value]="c.id">{{c.name}}</mat-option>
-                    </mat-select>
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="description" required>
+                    <mat-error *ngIf="productForm.controls.description.touched && productForm.controls.description.invalid">
+                        <span *ngIf="productForm.controls.description.errors.required">This Field is Mandatory</span>
+                    </mat-error>
                 </mat-form-field>
+                
             </div>
-            <div fxLayout="row wrap">
+            <!-- <div fxLayout="row wrap"> -->
                 <!-- <div fxFlex fxLayout="column"> -->
                     <mat-form-field appearance="fill" fxFlex>
-                        <mat-label>Description</mat-label>
-                        <input matInput formControlName="description" required>
-                        <mat-error *ngIf="productForm.controls.description.touched && productForm.controls.description.invalid">
-                            <span *ngIf="productForm.controls.description.errors.required">This Field is Mandatory</span>
-                        </mat-error>
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="categoryid">
+                            <mat-option *ngFor="let c of categories" [value]="c.id">{{c.name}}</mat-option>
+                        </mat-select>
                     </mat-form-field>
                 <!-- </div> -->
-            </div>
+            <!-- </div> -->
         </div>
     </form>
 </mat-dialog-content>
