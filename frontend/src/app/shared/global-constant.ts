@@ -5,4 +5,5 @@ export class GlobalConstants {
     public static contactnumberregex: string = "^[e0-9]{10,10}$"
     public static error:string = "error"
     public static unauthorized:string = "You are not authorized to access this page"
+    public static productexisterror:string = "Product already exist"
 }

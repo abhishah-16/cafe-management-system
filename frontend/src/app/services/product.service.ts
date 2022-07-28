@@ -46,11 +46,11 @@ export class ProductService {
 
   getProductsByCategory(id: any) {
     return this.httpclient.get(this.url +
-      "/product/getbycategory" + id)
+      "/product/getbycategory/" + id)
   }
 
   getProductById(id: any) {
     return this.httpclient.get(this.url +
-      "/product/getbyid" + id)
+      "/product/getbyid/" + id)
   }
 }

@@ -1,0 +1,25 @@
+mat-form-field {
+    padding: 5px;
+}
+
+th,
+td {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+th {
+    color: red
+}
+
+table {
+    width: 100%
+}
+
+.mat-row:hover .mat-cell {
+    background-color: lightgray;
+}
+
+.float-right{
+    float: right;
+}
