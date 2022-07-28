@@ -2,7 +2,8 @@
     <mat-card-header>
         <mat-card-title>Manage Order</mat-card-title>
         <hr>
-        <button mat-flat-button color="primary" class="float-right" (click)="onSubmit()" [disabled]="validatesubmit()">Submit & Get Bill </button>
+        <button mat-flat-button color="primary" class="float-right" (click)="onSubmit()"
+            [disabled]="validatesubmit()">Submit & Get Bill </button>
     </mat-card-header>
 </mat-card>
 <br>
@@ -45,7 +46,7 @@
                     <mat-form-field appearance="fill" fxFlex>
                         <mat-label>Payment Method</mat-label>
                         <mat-select matInput formControlName="paymentmethod" required>
-                            <mat-option value="">Cash</mat-option>
+                            <mat-option value="Cash">Cash</mat-option>
                             <mat-option value="Credit card">Credit card</mat-option>
                             <mat-option value="Debit card">Debit card</mat-option>
                         </mat-select>
@@ -62,7 +63,9 @@
 </mat-card>
 <hr>
 <mat-card>
-    <h3><b><span>Select Product</span></b></h3>
+    <mat-card-header>
+        <mat-card-title>Select Product</mat-card-title>
+    </mat-card-header>
     <form [formGroup]="manageorderForm">
         <div fxFlex fxLayout="column">
             <div fxLayout="row wrap">
