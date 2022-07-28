@@ -49,3 +49,16 @@
         background-color: #04AA6D;
         color: white;
       }
+      td{
+        width:1000px
+    }
+    th,td{
+        font-size: larger;
+        font-weight: bolder;
+    }
+    th{
+        color:red
+    }
+    .mat-row:hover .mat-cell {
+        background-color: lightgray;
+      }
