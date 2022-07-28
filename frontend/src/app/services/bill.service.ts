@@ -23,4 +23,16 @@ export class BillService {
       responseType: 'blob'
     })
   }
+
+  getBill() {
+    return this.httpclient.get(this.url +
+      "/bill/getbill")
+  }
+
+  deleteBill(id: any) {
+    return this.httpclient.delete(this.url +
+      "/bill/delete/" + id, {
+      headers: new HttpHeaders().set("Content-Type", "application/json")
+    })
+  }
 }
