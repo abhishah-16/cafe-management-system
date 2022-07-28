@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { saveAs } from 'file-saver';
 import { BillService } from 'src/app/services/bill.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstants } from 'src/app/shared/global-constant';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
 import { ViewBillProductsComponent } from '../dialog/view-bill-products/view-bill-products.component';
 
 @Component({
@@ -58,9 +60,45 @@ export class ViewBillComponent implements OnInit {
   }
 
   handledownloadaction(value: any) {
-
+    const data = {
+      name: value.name,
+      email: value.email,
+      uuid: value.uuid,
+      contactnumber: value.contactnumber,
+      paymentmethod: value.paymentmethod,
+      totalAmount: value.total,
+      productDetails: value.productdetail,
+    }
+    this.billservice.getPdf(data).subscribe((res: any) => {
+      saveAs(res, value.uuid + '.pdf')
+    })
   }
   handledeleteaction(value: any) {
+    const dialogconfig = new MatDialogConfig()
+    dialogconfig.data = {
+      message: 'delete ' + value.name + ' bill'
+    }
+    dialogconfig.width = "850px"
+    const dialogref = this.dialog.open(ConfirmationComponent, dialogconfig)
+    const sub = dialogref.componentInstance.onemitstatuschange.subscribe((res) => {
+      this.deleteBill(value.id)
+      dialogref.close()
+    })
+  }
 
+  deleteBill(id: any) {
+    this.billservice.deleteBill(id).subscribe((res: any) => {
+      this.tableData()
+      this.responsemessage = res
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
+    }, (error: any) => {
+      if (error.error) {
+        this.tableData()
+        this.responsemessage = error.error.text
+      } else {
+        this.responsemessage = GlobalConstants.genericerror
+      }
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
+    })
   }
 }
