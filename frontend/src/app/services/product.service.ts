@@ -43,4 +43,14 @@ export class ProductService {
       headers: new HttpHeaders().set("Content-Type", "application/json")
     })
   }
+
+  getProductsByCategory(id: any) {
+    return this.httpclient.get(this.url +
+      "/product/getbycategory" + id)
+  }
+
+  getProductById(id: any) {
+    return this.httpclient.get(this.url +
+      "/product/getbyid" + id)
+  }
 }
