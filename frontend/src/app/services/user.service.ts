@@ -34,14 +34,28 @@ export class UserService {
 
   // checktoken
   checktoken() {
-    return this.httpclient.get(this.url+
+    return this.httpclient.get(this.url +
       "/user/checktoken")
   }
 
   // change password
-  changePassword(data:any) {
+  changePassword(data: any) {
     return this.httpclient.post(this.url +
       "/user/changepassword", data, {
+      headers: new HttpHeaders().set("Content-Type", "application/json")
+    })
+  }
+
+  // getuser
+  getUser() {
+    return this.httpclient.get(this.url +
+      "/user/get/")
+  }
+
+  // updateuser
+  update(data: any) {
+    return this.httpclient.patch(this.url +
+      "/user/update", data, {
       headers: new HttpHeaders().set("Content-Type", "application/json")
     })
   }

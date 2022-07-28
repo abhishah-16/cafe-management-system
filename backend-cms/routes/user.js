@@ -63,7 +63,7 @@ router.post('/login', (req, res) => {
 })
 // get all user
 router.get('/get', auth.authenticationToken, checkRole.checkRole, (req, res) => {
-    query = `select id,name,contactnumber,status from "user" where role!='admin'`
+    query = `select id,name,email,contactnumber,status from "user" where role!='admin'`
     connection.query(query, (err, result) => {
         if (!err) {
             return res.status(200).send(result.rows)
