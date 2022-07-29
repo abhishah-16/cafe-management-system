@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private userservice: UserService,
     private dialogref: MatDialogRef<LoginComponent>,
     private snackbarservice: SnackbarService,
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,21 +35,22 @@ export class LoginComponent implements OnInit {
       email: formData.email,
       password: formData.password
     }
-    this.userservice.login(data).subscribe((response:any) => {
+    this.userservice.login(data).subscribe((response: any) => {
       this.responsemessage = response
       this.dialogref.close()
-      localStorage.setItem('token',response.token)
+      localStorage.setItem('token', response.token)
       this.router.navigate(['/cafe/dashboard'])
       // this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error) => {
       console.log(error)
       if (error.error) {
+        this.dialogref.close()
         this.responsemessage = error.error
       } else {
-  
+
         this.responsemessage = GlobalConstants.genericerror
       }
-      this.snackbarservice.opensnackbar(this.responsemessage,GlobalConstants.error)
+      this.snackbarservice.opensnackbar(this.responsemessage, GlobalConstants.error)
     })
   }
 }

@@ -37,15 +37,24 @@ export class SignupComponent implements OnInit {
       contactnumber: formData.contactnumber,
       password: formData.password
     }
-    this.userservice.signup(data).subscribe((response) => {
+    this.userservice.signup(data).subscribe((response: any) => {
       this.dialogref.close()
       this.responsemessage = response
+      console.log(response)
       this.snackbarservice.opensnackbar(this.responsemessage, "")
       this.router.navigate(['/'])
     }, (error) => {
       // console.log(error.error)
+      // if(error.error.text){
+      //   this.responsemessage = error.error.text
+      // }
       if (error) {
-        this.responsemessage = error.error
+        console.log(error.error.text)
+        if (error.error.text) {
+          this.responsemessage = error.error.text
+        } else {
+          this.responsemessage = error.error
+        }
         console.log(this.responsemessage)
       } else {
         console.log(this.responsemessage)
@@ -53,7 +62,7 @@ export class SignupComponent implements OnInit {
       }
       // this.responsemessage = GlobalConstants.genericerror
       console.log(this.responsemessage)
-      this.snackbarservice.opensnackbar(this.responsemessage, GlobalConstants.error)
+      this.snackbarservice.opensnackbar(this.responsemessage, "")
     })
   }
 }
