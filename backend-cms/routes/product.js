@@ -82,8 +82,6 @@ router.delete('/delete/:id', auth.authenticationToken, checkRole.checkRole, (req
     query = `delete from product where id=$1`
     connection.query(query, [id], (err, result) => {
         if (!err) {
-
-            // console.log(result)
             if (result.rowCount == 0) {
                 return res.status(404).send('Product not found')
             }

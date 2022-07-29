@@ -51,7 +51,6 @@ export class ProductComponent implements OnInit {
       this.categories = response
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.dialog.close()
         this.responsemessage = error.error.text
       } else {
@@ -68,6 +67,7 @@ export class ProductComponent implements OnInit {
       this.add()
     }
   }
+
   add() {
     const formData = this.productForm.value
     const data = {
@@ -76,15 +76,12 @@ export class ProductComponent implements OnInit {
       description: formData.description,
       price: formData.price
     }
-
     this.productservice.addProduct(data).subscribe((response: any) => {
       this.dialog.close()
       this.responsemessage = response?.message
-      // this.onAddproduct.emit()
       this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.dialog.close()
         this.onAddproduct.emit()
         this.responsemessage = error.error.text
@@ -110,7 +107,6 @@ export class ProductComponent implements OnInit {
       this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.onEditproduct.emit()
         this.dialog.close()
         this.responsemessage = error.error.text

@@ -16,7 +16,6 @@ export class RouteGuardService {
   canActivate(route: ActivatedRouteSnapshot): boolean {
     let expectedrolearray = route.data
     expectedrolearray = expectedrolearray.expectedrole
-
     const token: any = localStorage.getItem('token')
     var tokenpayload: any
     try {
@@ -27,9 +26,7 @@ export class RouteGuardService {
     }
     let checkrole = false
     const n = expectedrolearray.length
-    // console.log(expectedrolearray)
     for (let i = 0; i < n; i++) {
-      // const element = rolearray[i];
       if (expectedrolearray[i] == tokenpayload.role) {
         checkrole = true
       }

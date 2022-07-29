@@ -13,7 +13,8 @@ import { GlobalConstants } from '../shared/global-constant';
 export class ForgotPasswordComponent implements OnInit {
   forgotpasswordForm: any = FormGroup
   responsemessage: any
-  constructor(private formbuilder: FormBuilder,
+  constructor(
+    private formbuilder: FormBuilder,
     private userservice: UserService,
     private dialogref: MatDialogRef<ForgotPasswordComponent>,
     private snackbarservice: SnackbarService) { }
@@ -23,6 +24,7 @@ export class ForgotPasswordComponent implements OnInit {
       email: [null, [Validators.required, Validators.pattern(GlobalConstants.emailregex)]],
     })
   }
+  
   onSubmit() {
     const formData = this.forgotpasswordForm.value
     const data = {

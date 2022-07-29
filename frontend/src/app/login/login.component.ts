@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-
 import { SnackbarService } from '../services/snackbar.service';
 import { UserService } from '../services/user.service';
 import { GlobalConstants } from '../shared/global-constant';
@@ -29,6 +28,7 @@ export class LoginComponent implements OnInit {
       password: [null, [Validators.required]],
     })
   }
+
   onSubmit() {
     const formData = this.loginForm.value
     const data = {
@@ -40,14 +40,11 @@ export class LoginComponent implements OnInit {
       this.dialogref.close()
       localStorage.setItem('token', response.token)
       this.router.navigate(['/cafe/dashboard'])
-      // this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error) => {
-      console.log(error)
       if (error.error) {
         this.dialogref.close()
         this.responsemessage = error.error
       } else {
-
         this.responsemessage = GlobalConstants.genericerror
       }
       this.snackbarservice.opensnackbar(this.responsemessage, GlobalConstants.error)

@@ -33,7 +33,6 @@ router.get('/details', auth.authenticationToken, (req, res) => {
                 category: categorycount,
                 product: productcount,
                 bill: billcount
-
             }
             return res.status(200).send(data)
         } else {
@@ -41,4 +40,5 @@ router.get('/details', auth.authenticationToken, (req, res) => {
         }
     })
 })
+
 module.exports = router

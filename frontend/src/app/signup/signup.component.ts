@@ -29,6 +29,7 @@ export class SignupComponent implements OnInit {
       password: [null, [Validators.required]],
     })
   }
+
   onSubmit() {
     const formData = this.signupForm.value
     const data = {
@@ -44,12 +45,7 @@ export class SignupComponent implements OnInit {
       this.snackbarservice.opensnackbar(this.responsemessage, "")
       this.router.navigate(['/'])
     }, (error) => {
-      // console.log(error.error)
-      // if(error.error.text){
-      //   this.responsemessage = error.error.text
-      // }
       if (error) {
-        console.log(error.error.text)
         if (error.error.text) {
           this.responsemessage = error.error.text
         } else {
@@ -60,7 +56,6 @@ export class SignupComponent implements OnInit {
         console.log(this.responsemessage)
         this.responsemessage = GlobalConstants.genericerror
       }
-      // this.responsemessage = GlobalConstants.genericerror
       console.log(this.responsemessage)
       this.snackbarservice.opensnackbar(this.responsemessage, "")
     })

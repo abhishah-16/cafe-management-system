@@ -11,16 +11,17 @@ import { ConfirmationComponent } from 'src/app/material-component/confirmation/c
 })
 export class AppHeaderComponent {
   role: any;
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private dialog: MatDialog) {
-
   }
+
   logout() {
     const dialogconfig = new MatDialogConfig()
     dialogconfig.data = {
-      message:'Logout'
+      message: 'Logout'
     }
-    const dialogref = this.dialog.open(ConfirmationComponent,dialogconfig)
+    const dialogref = this.dialog.open(ConfirmationComponent, dialogconfig)
     const sub = dialogref.componentInstance.onemitstatuschange.subscribe((user) => {
       dialogref.close()
       localStorage.clear()
@@ -31,6 +32,6 @@ export class AppHeaderComponent {
   changepassword() {
     const dialogconfig = new MatDialogConfig()
     dialogconfig.width = "550px"
-    this.dialog.open(ChangepasswordComponent,dialogconfig)
+    this.dialog.open(ChangepasswordComponent, dialogconfig)
   }
 }

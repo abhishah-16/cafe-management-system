@@ -49,15 +49,15 @@ export class ManageOrderComponent implements OnInit {
   }
 
   validatesubmit() {
-    if(
+    if (
       this.totalAmount === 0 ||
       this.manageorderForm.controls['name'].value == null ||
       this.manageorderForm.controls['email'].value == null ||
       this.manageorderForm.controls['contactnumber'].value == null ||
       this.manageorderForm.controls['paymentmethod'].value == null
-    ){
+    ) {
       return true
-    }else{
+    } else {
       return false
     }
   }
@@ -67,7 +67,6 @@ export class ManageOrderComponent implements OnInit {
       this.categories = response
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.responsemessage = error.error.text
       } else {
         this.responsemessage = GlobalConstants.genericerror
@@ -84,7 +83,6 @@ export class ManageOrderComponent implements OnInit {
       this.manageorderForm.controls['total'].setValue(0)
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.responsemessage = error.error.text
       } else {
         this.responsemessage = GlobalConstants.genericerror
@@ -101,7 +99,6 @@ export class ManageOrderComponent implements OnInit {
       this.manageorderForm.controls['total'].setValue(this.price)
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.responsemessage = error.error.text
       } else {
         this.responsemessage = GlobalConstants.genericerror
@@ -132,8 +129,6 @@ export class ManageOrderComponent implements OnInit {
     }
   }
 
-  
-
   add() {
     const formData = this.manageorderForm.value
     const productName = this.dataSource.find((e: { id: number }) => e.id == formData.product.id)
@@ -147,8 +142,6 @@ export class ManageOrderComponent implements OnInit {
         price: formData.price,
         total: formData.total
       })
-      // console.log(this.dataSource)
-      // console.log(formData.category)
       this.dataSource = [...this.dataSource]
       const message = 'Product Added Suceessfully'
       this.snackbarservice.opensnackbar(message, "")
@@ -165,7 +158,6 @@ export class ManageOrderComponent implements OnInit {
 
   onSubmit() {
     const formData = this.manageorderForm.value
-    // console.log(formData)
     const data = {
       name: formData.name,
       email: formData.email,
@@ -174,8 +166,6 @@ export class ManageOrderComponent implements OnInit {
       totalAmount: this.totalAmount,
       productDetails: JSON.stringify(this.dataSource)
     }
-    console.log(data)
-    // console.log(JSON.stringify(this.dataSource))
     this.billservice.generateReport(data).subscribe((res: any) => {
       this.downloadFile(res?.uuid)
       this.manageorderForm.reset()
@@ -200,7 +190,6 @@ export class ManageOrderComponent implements OnInit {
       saveAs(res, fileName + '.pdf')
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.responsemessage = error.error.text
       } else {
         this.responsemessage = GlobalConstants.genericerror
@@ -208,5 +197,4 @@ export class ManageOrderComponent implements OnInit {
       this.snackbarservice.opensnackbar(this.responsemessage, GlobalConstants.error)
     })
   }
-
 }
