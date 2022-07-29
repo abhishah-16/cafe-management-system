@@ -15,9 +15,12 @@
         <span fxFlex></span>
         <app-header></app-header>
     </mat-toolbar>
-    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0"
+       >
         <mat-sidenav #snav id="snav" class="dark-sidebar pl-xs" [mode]="mobileQuery.matches ? 'side' : 'over'"
-            fixedTopGap="0" [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches">
+            fixedTopGap="0" [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches"
+            style="background-image:url('https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg')">
             <app-sidebar></app-sidebar>
         </mat-sidenav>
         <mat-sidenav-content class="page-wrapper">
