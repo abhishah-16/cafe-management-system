@@ -152,6 +152,7 @@ router.post('/forgotpassword', (req, res) => {
         }
     })
 })
+
 // mail
 const transporter = nodemailer.createTransport({
     service: 'gmail',
