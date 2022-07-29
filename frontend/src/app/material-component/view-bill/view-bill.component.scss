@@ -5,8 +5,12 @@ th,td{
     font-size: larger;
     font-weight: bolder;
 }
+mat-card-title{
+    color:#e53935;
+    font-weight: bolder;
+}
 th{
-    color:red
+    color:#e53935;
 }
 .mat-row:hover .mat-cell {
     background-color: lightgray;
