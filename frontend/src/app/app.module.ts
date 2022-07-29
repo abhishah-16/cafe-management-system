@@ -42,14 +42,10 @@ import { MatTableModule } from '@angular/material/table';
     SharedModule,
     HttpClientModule,
     MatTableModule
-    // NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   providers: [HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
   bootstrap: [AppComponent],
   schemas:[
-    // NO_ERRORS_SCHEMA,
-    // CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class AppModule { }
-// HttpClientModule,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}

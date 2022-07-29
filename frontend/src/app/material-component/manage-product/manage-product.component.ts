@@ -70,7 +70,6 @@ export class ManageProductComponent implements OnInit {
       dialogRef.close()
       this.tableData()
     })
-
   }
 
   deleteProduct(id: any) {
@@ -80,7 +79,6 @@ export class ManageProductComponent implements OnInit {
       this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.responsemessage = error.error.text
       } else {
         this.responsemessage = GlobalConstants.genericerror
@@ -99,7 +97,6 @@ export class ManageProductComponent implements OnInit {
       this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.responsemessage = error.error.text
       } else {
         this.responsemessage = GlobalConstants.genericerror

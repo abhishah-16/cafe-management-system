@@ -8,7 +8,6 @@ export class UserService {
   url = environment.url
   constructor(private httpclient: HttpClient) { }
 
-  // signup user 
   signup(data: any) {
     return this.httpclient.post(this.url +
       "/user/signup", data, {
@@ -16,7 +15,6 @@ export class UserService {
     })
   }
 
-  // request for password
   forgotpassword(data: any) {
     return this.httpclient.post(this.url +
       "/user/forgotpassword", data, {
@@ -24,7 +22,6 @@ export class UserService {
     })
   }
 
-  // login user
   login(data: any) {
     return this.httpclient.post(this.url +
       "/user/login", data, {
@@ -32,13 +29,11 @@ export class UserService {
     })
   }
 
-  // checktoken
   checktoken() {
     return this.httpclient.get(this.url +
       "/user/checktoken")
   }
 
-  // change password
   changePassword(data: any) {
     return this.httpclient.post(this.url +
       "/user/changepassword", data, {
@@ -46,13 +41,11 @@ export class UserService {
     })
   }
 
-  // getuser
   getUser() {
     return this.httpclient.get(this.url +
       "/user/get/")
   }
 
-  // updateuser
   update(data: any) {
     return this.httpclient.patch(this.url +
       "/user/update", data, {

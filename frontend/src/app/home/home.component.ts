@@ -27,16 +27,19 @@ export class HomeComponent implements OnInit {
       })
     }
   }
+
   signupaction() {
     const dialogconfig = new MatDialogConfig()
     dialogconfig.width = "550px"
     this.dialog.open(SignupComponent, dialogconfig)
   }
+
   forgotPasswordaction() {
     const dialogconfig = new MatDialogConfig()
     dialogconfig.width = "550px"
     this.dialog.open(ForgotPasswordComponent, dialogconfig)
   }
+  
   loginaction() {
     const dialogconfig = new MatDialogConfig()
     dialogconfig.width = "550px"

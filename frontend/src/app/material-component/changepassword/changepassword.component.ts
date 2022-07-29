@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constant';
-import { SignupComponent } from 'src/app/signup/signup.component';
 
 @Component({
   selector: 'app-changepassword',
@@ -15,7 +14,6 @@ import { SignupComponent } from 'src/app/signup/signup.component';
 export class ChangepasswordComponent implements OnInit {
   changepasswordForm: any = FormGroup
   responsemessage: any
-  // formBuilder: any;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private userservice: UserService,
@@ -39,7 +37,6 @@ export class ChangepasswordComponent implements OnInit {
     }
     this.userservice.changePassword(data).subscribe((response: any) => {
       this.dialogref.close()
-      console.log(response.message)
       this.responsemessage = response
       this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error: any) => {

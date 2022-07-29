@@ -9,7 +9,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ConfirmationComponent implements OnInit {
   onemitstatuschange = new EventEmitter()
   details:any = {
-
   }
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData:any) { }
 
@@ -18,8 +17,8 @@ export class ConfirmationComponent implements OnInit {
       this.details = this.dialogData
     }
   }
+
   handleChangeAction(){
     this.onemitstatuschange.emit()
   }
-
 }

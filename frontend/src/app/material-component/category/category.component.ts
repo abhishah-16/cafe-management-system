@@ -1,5 +1,3 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -38,6 +36,7 @@ export class CategoryComponent implements OnInit {
       this.categoryForm.patchValue(this.dialogdata.data)
     }
   }
+
   onSubmit() {
     if (this.dialogdata.action === 'Edit') {
       this.edit()
@@ -50,7 +49,6 @@ export class CategoryComponent implements OnInit {
     const formData = this.categoryForm.value
     const data = {
       name: formData.name
-
     }
     this.categoryservice.addCategory(data).subscribe((response: any) => {
       this.dialog.close()
@@ -59,7 +57,6 @@ export class CategoryComponent implements OnInit {
       this.snackbarservice.opensnackbar(this.responsemessage, "")
     }, (error: any) => {
       if (error) {
-        console.log(error)
         this.onAddcategory.emit()
         this.dialog.close()
         this.responsemessage = error.error.text
@@ -76,7 +73,6 @@ export class CategoryComponent implements OnInit {
       id: this.dialogdata.data.id,
       name: formData.name,
     }
-    // console.log(data)
     this.categoryservice.updateCategory(data).subscribe((response: any) => {
       this.dialog.close();
       this.responsemessage = response;
@@ -93,5 +89,4 @@ export class CategoryComponent implements OnInit {
       this.snackbarservice.opensnackbar(this.responsemessage, "success");
     })
   }
-
 }

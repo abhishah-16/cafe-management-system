@@ -45,6 +45,7 @@ export class ManageCategoryComponent implements OnInit {
       this.tableData()
     })
   }
+
   handleeditaction(value: any) {
     const dialogconfig = new MatDialogConfig()
     dialogconfig.data = {
@@ -59,7 +60,6 @@ export class ManageCategoryComponent implements OnInit {
     const sub = dialogref.componentInstance.onEditcategory.subscribe((res) => {
       this.tableData()
     })
-    
   }
 
   tableData() {
