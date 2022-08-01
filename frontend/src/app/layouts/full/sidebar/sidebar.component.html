@@ -3,8 +3,8 @@
         group="{{item.state}}">
         <a appAccordionToggle [routerLink]="['/cafe',item.state]"
             *ngIf="(item.role == '' || item.role == tokenpayload.role)">
-            <mat-icon>{{item.icon}}</mat-icon>
-            <span>{{item.name}}</span>
+            <mat-icon style="color:white">{{item.icon}}</mat-icon>
+            <span style="color:white">{{item.name}}</span>
             <span fxFlex></span>
         </a>
     </mat-list-item>
