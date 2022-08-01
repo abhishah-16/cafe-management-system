@@ -38,7 +38,6 @@ export class ForgotPasswordComponent implements OnInit {
       if (error.error.text) {
         this.responsemessage = error.error.text
       } else {
-        console.log(this.responsemessage)
         this.responsemessage = GlobalConstants.genericerror
       }
       this.snackbarservice.opensnackbar(this.responsemessage, "")
