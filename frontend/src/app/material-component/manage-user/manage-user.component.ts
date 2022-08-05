@@ -25,6 +25,7 @@ export class ManageUserComponent implements OnInit {
   tableData() {
     this.userservice.getUser().subscribe((response: any) => {
       this.dataSource = new MatTableDataSource(response)
+      console.log(this.dataSource)
     }, (error: any) => {
       if (error.error) {
         this.responsemessage = error.error.text
