@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  url:'http://localhost:5000'
+  url:'https://cafe-management-system-123.herokuapp.com'
 };
